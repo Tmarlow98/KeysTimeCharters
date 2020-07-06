@@ -1,8 +1,11 @@
+*{
+  padding: 0;
+  margin: 0;
+}
 h1 {
-    border: 2px solid black;
-    margin: 0;  
+  
+    border: 2px solid black; 
     text-align: center;
-    background-color: orange;
 }
 
 p1 {
@@ -21,7 +24,7 @@ h2 {
    
     position: relative;
     text-align: center;
-    color: white;
+    color: black;
 }
 
 .background {
@@ -43,7 +46,6 @@ h2 {
     list-style-type: none;
     overflow: hidden;
     background-color: #333;
-    margin: 0;
     border:0px;
   }
 
