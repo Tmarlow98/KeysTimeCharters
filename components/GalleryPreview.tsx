@@ -49,7 +49,6 @@ export default function GalleryPreview() {
                 i === 0 ? 'min-h-[260px] md:min-h-[420px]' : 'aspect-[4/5]'
               }`}
             >
-              {/* TODO: replace background-image src with real photo at /public/images/gallery */}
               <div
                 role="img"
                 aria-label={p.alt}

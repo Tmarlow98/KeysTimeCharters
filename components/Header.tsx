@@ -68,9 +68,9 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Link href={site.bookingUrl} className="btn-primary !py-2.5 !px-5">
-            Book a Trip
-          </Link>
+          <a href={site.phoneHref} className="btn-primary !py-2.5 !px-5">
+            Call to Book
+          </a>
         </nav>
 
         {/* Mobile toggle */}
@@ -119,14 +119,7 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href={site.bookingUrl}
-              onClick={() => setOpen(false)}
-              className="btn-primary mt-4"
-            >
-              Book a Trip
-            </Link>
-            <a href={site.phoneHref} className="btn-outline mt-2">
+            <a href={site.phoneHref} onClick={() => setOpen(false)} className="btn-primary mt-4">
               Call {site.phone}
             </a>
           </nav>

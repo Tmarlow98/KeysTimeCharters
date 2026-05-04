@@ -1,4 +1,4 @@
-import SectionHeading from './SectionHeading';
+﻿import SectionHeading from './SectionHeading';
 
 /**
  * Placeholder testimonials.
@@ -8,24 +8,24 @@ import SectionHeading from './SectionHeading';
 const REVIEWS = [
   {
     quote:
-      "Easily the most dialed-in guide I’ve fished with in the Keys. Read the wind, made the right call on the bay, and put me on tailing reds inside the first hour. Already booking the next trip.",
-    author: 'Mark D.',
-    location: 'Atlanta, GA',
-    trip: 'Backcountry — Florida Bay',
+      "Hit the inshore slam — snook, redfish, and trout — in just a couple of hours. One of the redfish was the biggest I've ever caught. Tyler knows this water inside and out. I grew up fishing Flamingo and haven't been back in over a decade — safe to say I'll be back much sooner, and I'll be calling Tyler.",
+    author: 'Josh P.',
+    location: '',
+    trip: 'Half Day · Flamingo Inshore',
   },
   {
     quote:
-      "I’d never stood on the bow of a flats skiff. By the end of the day I’d hooked my first tarpon. Patient coaching, no pressure, and just a really good day on the water.",
-    author: 'Lauren K.',
-    location: 'Chicago, IL',
-    trip: 'Flamingo — Tarpon',
+      "Limited out on mangrove snapper with a throwback snook at the end as an exclamation point. Tyler was attentive — offering help, poling, sighting, and baiting when needed. His Maverick runs 30 mph in a foot of water, which was a thrill in itself. Highly recommend.",
+    author: 'Bernie R.',
+    location: '',
+    trip: 'Snapper Day · Flamingo',
   },
   {
     quote:
-      "Booked a half day expecting a quick trip and got a full guided experience. Snook, redfish, and the kind of scenery you don’t get anywhere else. Boat was clean, gear was right, fish were there.",
-    author: 'Brian T.',
-    location: 'Charlotte, NC',
-    trip: 'Backcountry — Snook',
+      "We were on a catch-and-cook mission with my 13-year-old and Captain Tyler did not disappoint — landed a beautiful sheephead and red drum and brought it back to Flamingo Lodge to be cooked. Multispecies outing, great service all around.",
+    author: 'Anthony C.',
+    location: '',
+    trip: 'Half Day · Catch & Cook',
   },
 ];
 
@@ -61,7 +61,7 @@ export default function Testimonials() {
               </blockquote>
               <figcaption className="mt-6 border-t border-ink-100 pt-4 text-sm">
                 <span className="font-semibold text-ink-900">{r.author}</span>
-                <span className="text-ink-600"> · {r.location}</span>
+                {r.location && <span className="text-ink-600"> · {r.location}</span>}
                 <div className="mt-1 text-xs uppercase tracking-widest text-flats-700">
                   {r.trip}
                 </div>

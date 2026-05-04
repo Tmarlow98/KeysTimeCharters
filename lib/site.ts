@@ -6,23 +6,18 @@
  */
 export const site = {
   name: 'Keys Time Charters',
-  legalName: 'Keys Time Charters LLC',
+  legalName: 'Keys Time Charters, Inc.',
   tagline: 'Florida Keys & Flamingo Fishing Charters',
   description:
     'Private flats and backcountry fishing charters in the Florida Keys and Everglades National Park. Tarpon, bonefish, snook, and redfish with a local guide.',
 
   url: 'https://keystimecharters.com',
 
-  // TODO: replace with real contact info
-  phone: '(305) 555-0123',
-  phoneHref: 'tel:+13055550123',
-  email: 'book@keystimecharters.com',
-  emailHref: 'mailto:book@keystimecharters.com',
+  phone: '(954) 621-7953',
+  phoneHref: 'tel:+19546217953',
+  email: 'info@keystimecharters.com',
+  emailHref: 'mailto:info@keystimecharters.com',
 
-  // TODO: replace with real booking link (FareHarbor, Calendly, etc.)
-  bookingUrl: '/contact',
-
-  // TODO: replace with real coordinates / departure point if you want them in schema
   departurePoint: 'Florida Keys & Flamingo, FL',
   serviceArea: ['Florida Keys', 'Flamingo', 'Florida Bay', 'Everglades National Park'],
 

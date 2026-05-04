@@ -48,9 +48,9 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link href={site.bookingUrl} className="btn-primary bg-flats-500 hover:bg-flats-600">
-              Book Your Trip
-            </Link>
+            <a href={site.phoneHref} className="btn-primary bg-flats-500 hover:bg-flats-600">
+              Call to Book
+            </a>
             <Link href="#trips" className="btn-secondary">
               View Fishing Trips
             </Link>
