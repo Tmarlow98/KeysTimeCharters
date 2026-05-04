@@ -1,10 +1,5 @@
-﻿import SectionHeading from './SectionHeading';
+import SectionHeading from './SectionHeading';
 
-/**
- * Placeholder testimonials.
- * TODO (CLIENT): replace with real client quotes + first names + city/state.
- * Keep them specific — the more concrete the detail, the more it converts.
- */
 const REVIEWS = [
   {
     quote:
@@ -61,7 +56,7 @@ export default function Testimonials() {
               </blockquote>
               <figcaption className="mt-6 border-t border-ink-100 pt-4 text-sm">
                 <span className="font-semibold text-ink-900">{r.author}</span>
-                {r.location && <span className="text-ink-600"> · {r.location}</span>}
+                {r.location && <span className="text-ink-600"> &middot; {r.location}</span>}
                 <div className="mt-1 text-xs uppercase tracking-widest text-flats-700">
                   {r.trip}
                 </div>
