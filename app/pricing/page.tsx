@@ -45,11 +45,11 @@ const INCLUDED = [
   'Fuel and boat fees',
   'Fish cleaning and filleting',
   'Cold drinking water on board',
+  'Florida saltwater fishing license',
   'Expert local guide',
 ];
 
 const NOT_INCLUDED = [
-  'Florida saltwater fishing license (required — ask about options)',
   'Gratuity (customary, appreciated)',
   'Food and personal snacks',
 ];

@@ -1,4 +1,4 @@
-import SectionHeading from './SectionHeading';
+﻿import SectionHeading from './SectionHeading';
 import type { FAQItem } from '@/lib/seo';
 
 /**
@@ -24,7 +24,7 @@ export const FAQS: FAQItem[] = [
   {
     question: 'What should I bring on a flats fishing trip?',
     answer:
-      'Polarized sunglasses (essential for sight fishing), reef-safe sunscreen, a hat, light long-sleeve sun shirt, soft-soled shoes or boat shoes, water, snacks, and a Florida saltwater fishing license unless we’ve handled that for you. We provide all rods, reels, tackle, and bait. A dry bag for phones and cameras is a good idea.',
+      'Polarized sunglasses (essential for sight fishing), reef-safe sunscreen, a hat, light long-sleeve sun shirt, soft-soled shoes or boat shoes, water, and snacks. We provide all rods, reels, tackle, bait, and your Florida saltwater fishing license. A dry bag for phones and cameras is a good idea.',
   },
   {
     question: 'Where do your fishing charters depart from?',
