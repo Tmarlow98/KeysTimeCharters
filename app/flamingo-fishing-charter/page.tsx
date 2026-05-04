@@ -116,7 +116,7 @@ export default function FlamingoPage() {
               {[
                 { label: 'Departure', body: 'We launch from Flamingo Marina at first light — exact time confirmed a few days out based on tides and weather.' },
                 { label: 'The Boat', body: 'A Maverick flats skiff — fast across open water, quiet enough to pole into the skinny stuff without spooking fish.' },
-                { label: 'The Gear', body: 'All rods, reels, tackle, and bait provided. Spinning and fly gear available. Just bring a valid Florida saltwater fishing license.' },
+                { label: 'The Gear', body: 'All rods, reels, tackle, and bait provided. Spinning and fly gear available. Fishing license included.' },
                 { label: 'Private Only', body: 'Every charter is private. No shared trips. It\'s just your group and the guide, all day.' },
               ].map((item) => (
                 <div key={item.label} className="rounded-2xl border border-ink-100 bg-sand-50 p-6">
