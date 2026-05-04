@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { site } from '@/lib/site';
 
 /**
@@ -40,14 +39,11 @@ export default function BookingCTA() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href={site.bookingUrl}
-              className="btn-primary bg-flats-500 hover:bg-flats-600"
-            >
-              Book Your Trip
-            </Link>
-            <a href={site.phoneHref} className="btn-secondary">
-              Call {site.phone}
+            <a href={site.phoneHref} className="btn-primary bg-flats-500 hover:bg-flats-600">
+              Call to Book
+            </a>
+            <a href={site.emailHref} className="btn-secondary">
+              Email Us
             </a>
           </div>
 
@@ -57,19 +53,16 @@ export default function BookingCTA() {
               <a href={site.phoneHref} className="mt-1 block font-semibold hover:text-flats-200">
                 {site.phone}
               </a>
-              {/* TODO: replace placeholder phone in lib/site.ts */}
             </div>
             <div>
               <div className="text-xs uppercase tracking-widest text-white/60">Email</div>
               <a href={site.emailHref} className="mt-1 block font-semibold hover:text-flats-200">
                 {site.email}
               </a>
-              {/* TODO: replace placeholder email in lib/site.ts */}
             </div>
             <div>
               <div className="text-xs uppercase tracking-widest text-white/60">Departures</div>
               <p className="mt-1 font-semibold">{site.departurePoint}</p>
-              {/* TODO: confirm departure point in lib/site.ts */}
             </div>
           </div>
         </div>
