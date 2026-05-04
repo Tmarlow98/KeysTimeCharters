@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { site } from '@/lib/site';
+import CallToBook from './CallToBook';
 
 /**
  * Hero — full-bleed photo, deep gradient, single H1.
@@ -48,9 +48,7 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href={site.phoneHref} className="btn-primary bg-flats-500 hover:bg-flats-600">
-              Call to Book
-            </a>
+            <CallToBook className="btn-primary bg-flats-500 hover:bg-flats-600" />
             <Link href="#trips" className="btn-secondary">
               View Fishing Trips
             </Link>
