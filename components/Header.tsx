@@ -68,9 +68,9 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <a href={site.phoneHref} className="btn-primary !py-2.5 !px-5">
+          <Link href="/contact" className="btn-primary !py-2.5 !px-5">
             Call to Book
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile toggle */}

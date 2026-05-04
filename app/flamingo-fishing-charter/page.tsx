@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import BookingCTA from '@/components/BookingCTA';
 import SectionHeading from '@/components/SectionHeading';
 import TripCard from '@/components/TripCard';
+import CallToBook from '@/components/CallToBook';
 import { TRIPS } from '@/lib/trips';
 import { site } from '@/lib/site';
 
@@ -54,7 +55,7 @@ export default function FlamingoPage() {
               Backcountry trips out of Flamingo Marina — tarpon, snook, and redfish on the water a local guide fishes every week.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href={site.phoneHref} className="btn-primary bg-flats-500 hover:bg-flats-600">Call to Book</a>
+              <CallToBook className="btn-primary bg-flats-500 hover:bg-flats-600" />
               <a href={site.emailHref} className="btn-secondary">Email Us</a>
             </div>
           </div>

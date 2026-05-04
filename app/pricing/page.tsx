@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookingCTA from '@/components/BookingCTA';
 import SectionHeading from '@/components/SectionHeading';
+import CallToBook from '@/components/CallToBook';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -98,12 +99,7 @@ export default function PricingPage() {
                   <p className="mt-3 text-xs text-ink-500">
                     <span className="font-medium text-ink-700">Best for:</span> {trip.ideal}
                   </p>
-                  <a
-                    href={site.phoneHref}
-                    className="btn-primary mt-8 text-center"
-                  >
-                    Call to Book
-                  </a>
+                  <CallToBook className="btn-primary mt-8 text-center" />
                 </div>
               ))}
             </div>

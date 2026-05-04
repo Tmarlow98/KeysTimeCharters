@@ -1,4 +1,5 @@
 import { site } from '@/lib/site';
+import CallToBook from './CallToBook';
 
 /**
  * Final-pitch CTA. Keep this section ruthlessly simple — one clear path
@@ -39,9 +40,7 @@ export default function BookingCTA() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a href={site.phoneHref} className="btn-primary bg-flats-500 hover:bg-flats-600">
-              Call to Book
-            </a>
+            <CallToBook className="btn-primary bg-flats-500 hover:bg-flats-600" />
             <a href={site.emailHref} className="btn-secondary">
               Email Us
             </a>
