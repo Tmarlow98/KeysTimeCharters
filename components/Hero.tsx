@@ -1,14 +1,16 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import CallToBook from './CallToBook';
 
 /**
  * Hero — full-bleed photo, deep gradient, single H1.
  *
- * IMAGE NOTE (CLIENT):
- *   Replace /public/images/hero-flats.jpg with a real horizontal hero shot
- *   (skiff on the flats, mangrove shoreline, or angler with a tarpon).
- *   Recommended: 2400×1400, < 350 KB after compression, exported as .webp.
- *   Keep an .jpg fallback at the same name for older browsers.
+ * The hero image is the page's LCP element, so it uses next/image with
+ * `priority` (which sets fetchpriority=high and skips lazy-loading) and
+ * `sizes="100vw"` so the browser picks the smallest source set entry that
+ * still covers the viewport. Behind the scenes Next.js converts the JPG
+ * to AVIF/WebP at request time, typically another ~30% smaller than the
+ * already-compressed source.
  */
 export default function Hero() {
   return (
@@ -16,14 +18,13 @@ export default function Hero() {
       aria-labelledby="hero-title"
       className="relative isolate flex min-h-[92vh] items-end overflow-hidden bg-ink-900"
     >
-      {/* IMAGE: replace with real photo. Using inline style so we don't depend on next/image config out of the gate. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            'url("/images/hero-flats.jpg"), linear-gradient(135deg, #0b2238, #1f4361)',
-        }}
+      <Image
+        src="/images/hero-flats.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover object-center"
       />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-hero-gradient" />
 
