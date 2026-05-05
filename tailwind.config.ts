@@ -56,9 +56,12 @@ const config: Config = {
           300: '#d2c096',
         },
       },
+      // Fonts come in via next/font/google in app/layout.tsx, which exposes
+      // them as CSS custom properties on <html>. Referencing the variables
+      // here means we never re-download them and we get zero CLS.
       fontFamily: {
-        sans: ['"Inter"', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-        display: ['"Fraunces"', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        display: ['var(--font-display)', 'Georgia', 'serif'],
       },
       letterSpacing: {
         tightish: '-0.015em',
