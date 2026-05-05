@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export type Trip = {
@@ -6,10 +7,7 @@ export type Trip = {
   area: string;
   blurb: string;
   species: string[];
-  /**
-   * Path to the trip card image. Replace the placeholder files in
-   * /public/images/trips/* with real photography (skiff/scenery + a hero fish).
-   */
+  /** Path to the trip card image (in /public/images/trips/). */
   image: string;
 };
 
@@ -21,14 +19,14 @@ export default function TripCard({ trip }: Props) {
       href={trip.href}
       className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-card transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:-translate-y-0.5"
     >
-      {/* IMAGE: replace placeholder file at trip.image with real trip photo */}
-      <div
-        className="relative h-56 w-full bg-cover bg-center"
-        style={{
-          backgroundImage: `url("${trip.image}"), linear-gradient(135deg,#1f4361,#5da9a1)`,
-        }}
-        aria-hidden="true"
-      >
+      <div className="relative h-56 w-full overflow-hidden">
+        <Image
+          src={trip.image}
+          alt={`${trip.title} — ${trip.area}`}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900/60 via-ink-900/10 to-transparent" />
         <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-ink-800 shadow-sm">
           {trip.area}

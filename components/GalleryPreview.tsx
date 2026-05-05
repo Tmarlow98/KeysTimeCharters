@@ -1,19 +1,12 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import SectionHeading from './SectionHeading';
 
 /**
- * GALLERY PLACEHOLDERS
- * ---------------------------------------------------------------
- * Replace the .src files below with real photos in /public/images/gallery/.
- * Suggested mix:
- *   1. Wide hero — boat / scenery (sunrise on Florida Bay, mangrove run)
- *   2. Action — angler on the bow with a bent rod
- *   3. Hero fish — clean grip-and-grin (tarpon, bonefish, snook, redfish)
- *   4. Detail — fly box, push pole, pelican on a stake-out marker
- *   5. Client — happy client release shot
- *   6. Scenery — empty flat at golden hour
- *
- * Aim for 1600px wide, < 250 KB each. Export .webp where possible.
+ * Homepage gallery preview — 5 photos in a 4-column masonry-ish grid.
+ * The full /gallery page renders the rest. All images go through next/image,
+ * which auto-converts to AVIF/WebP, picks a responsive size per breakpoint,
+ * and lazy-loads since this section is below the fold.
  */
 const PHOTOS = [
   { src: '/images/gallery/gallery-01.jpg', alt: 'Skiff on the flats at sunrise — Florida Bay', span: 'col-span-2 row-span-2' },
@@ -49,13 +42,17 @@ export default function GalleryPreview() {
                 i === 0 ? 'min-h-[260px] md:min-h-[420px]' : 'aspect-[4/5]'
               }`}
             >
-              <div
-                role="img"
-                aria-label={p.alt}
-                className="absolute inset-0 bg-cover bg-center transition duration-500 hover:scale-[1.03]"
-                style={{
-                  backgroundImage: `url("${p.src}"), linear-gradient(135deg,#1f4361,#5da9a1)`,
-                }}
+              <Image
+                src={p.src}
+                alt={p.alt}
+                fill
+                // The first image is 2x wide on md+, hence the wider sizes hint there.
+                sizes={
+                  i === 0
+                    ? '(min-width: 768px) 50vw, 100vw'
+                    : '(min-width: 768px) 25vw, 50vw'
+                }
+                className="object-cover object-center transition duration-500 hover:scale-[1.03]"
               />
               <figcaption className="sr-only">{p.alt}</figcaption>
             </figure>

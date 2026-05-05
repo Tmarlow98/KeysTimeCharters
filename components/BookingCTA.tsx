@@ -1,9 +1,14 @@
+import Image from 'next/image';
 import { site } from '@/lib/site';
 import CallToBook from './CallToBook';
 
 /**
  * Final-pitch CTA. Keep this section ruthlessly simple — one clear path
  * to book, plus phone & email for the people who'd rather call.
+ *
+ * Background photo is decorative (alt=""), purely to add atmosphere behind
+ * the gradient. It's far below the fold on the homepage so we let next/image
+ * lazy-load it (no `priority`).
  */
 export default function BookingCTA() {
   return (
@@ -11,14 +16,12 @@ export default function BookingCTA() {
       aria-labelledby="cta-heading"
       className="relative isolate overflow-hidden bg-ink-900 text-white"
     >
-      {/* Optional photo behind the CTA — replace /public/images/cta-bg.jpg with a wide flats shot */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-cover bg-center opacity-30"
-        style={{
-          backgroundImage:
-            'url("/images/cta-bg.jpg"), linear-gradient(135deg,#0b2238,#163149)',
-        }}
+      <Image
+        src="/images/cta-bg.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover object-center opacity-30"
       />
       <div
         aria-hidden="true"

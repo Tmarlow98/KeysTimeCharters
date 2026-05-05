@@ -76,15 +76,18 @@ export default function MeetYourCaptainPage() {
       <Header />
       <main id="main">
 
-        {/* Hero */}
+        {/* Hero — LCP element, served via next/image with priority */}
         <section
           aria-labelledby="captain-hero-title"
           className="relative isolate flex min-h-[60vh] items-end overflow-hidden bg-ink-900"
         >
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 -z-10 bg-cover bg-center"
-            style={{ backgroundImage: 'url("/images/captain-hero.jpg"), linear-gradient(135deg,#0b2238,#1f4361)' }}
+          <Image
+            src="/images/captain-hero.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="absolute inset-0 -z-10 object-cover object-center"
           />
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-900/95 via-ink-900/70 to-ink-900/40" />
           <div className="container-prose pb-14 pt-32 text-white">
