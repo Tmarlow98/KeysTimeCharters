@@ -6,6 +6,7 @@ type Props = {
   description?: ReactNode;
   align?: 'left' | 'center';
   as?: 'h2' | 'h3';
+  id?: string;
 };
 
 /**
@@ -18,6 +19,7 @@ export default function SectionHeading({
   description,
   align = 'left',
   as: Tag = 'h2',
+  id,
 }: Props) {
   const alignment =
     align === 'center' ? 'text-center mx-auto' : 'text-left';
@@ -25,7 +27,7 @@ export default function SectionHeading({
   return (
     <div className={`max-w-2xl ${alignment}`}>
       {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-      <Tag className="mt-3 text-3xl font-semibold leading-[1.1] sm:text-4xl md:text-[2.5rem]">
+      <Tag id={id} className="mt-3 text-3xl font-semibold leading-[1.1] sm:text-4xl md:text-[2.5rem]">
         {title}
       </Tag>
       {description && (
