@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/flamingo-fishing-charter',
     '/florida-keys-flats-fishing',
     '/backcountry-fishing-everglades',
-    '/tarpon-fishing-florida-keys',
+    '/meet-your-captain',
     '/pricing',
     '/gallery',
     '/contact',

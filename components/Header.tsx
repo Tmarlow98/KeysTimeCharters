@@ -8,7 +8,7 @@ const NAV = [
   { href: '/flamingo-fishing-charter', label: 'Flamingo' },
   { href: '/florida-keys-flats-fishing', label: 'Flats Fishing' },
   { href: '/backcountry-fishing-everglades', label: 'Backcountry' },
-  { href: '/tarpon-fishing-florida-keys', label: 'Tarpon' },
+  { href: '/meet-your-captain', label: 'Your Guide' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/contact', label: 'Contact' },

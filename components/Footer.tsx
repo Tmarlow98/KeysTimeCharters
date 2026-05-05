@@ -5,10 +5,10 @@ const NAV_TRIPS = [
   { href: '/flamingo-fishing-charter', label: 'Flamingo Fishing Charter' },
   { href: '/florida-keys-flats-fishing', label: 'Florida Keys Flats Fishing' },
   { href: '/backcountry-fishing-everglades', label: 'Backcountry Fishing' },
-  { href: '/tarpon-fishing-florida-keys', label: 'Tarpon Fishing' },
 ];
 
 const NAV_INFO = [
+  { href: '/meet-your-captain', label: 'Meet the Captain' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/contact', label: 'Contact' },
