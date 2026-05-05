@@ -35,7 +35,7 @@ export default function Hero() {
 
           <h1
             id="hero-title"
-            className="mt-4 font-display text-4xl font-semibold leading-[1.05] tracking-tightish sm:text-5xl md:text-6xl lg:text-7xl"
+            className="mt-4 font-display text-4xl font-semibold leading-[1.05] tracking-tightish text-white sm:text-5xl md:text-6xl lg:text-7xl"
           >
             Florida Keys &amp; Flamingo Fishing Charters,{' '}
             <span className="text-flats-200">Run by a Local Guide.</span>
