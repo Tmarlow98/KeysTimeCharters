@@ -1,11 +1,35 @@
 import type { Metadata, Viewport } from 'next';
+import { Fraunces, Inter } from 'next/font/google';
 import { site } from '@/lib/site';
 import './globals.css';
 
 /**
- * Root layout — global <html> shell, font preloads, default metadata.
+ * Root layout — global <html> shell, font setup, default metadata.
  * Per-page metadata in app/page.tsx (and future pages) will merge with this.
+ *
+ * Fonts are loaded via next/font/google, which:
+ *   - Self-hosts the font files (zero render-blocking external CSS)
+ *   - Subsets and preloads only the weights we actually use
+ *   - Eliminates layout shift from font swap (CLS = 0 on text)
+ *   - Removes the third-party Google Fonts request entirely
+ *
+ * The two CSS custom properties (`--font-sans`, `--font-display`) are
+ * referenced from tailwind.config.ts so the existing `font-sans` and
+ * `font-display` classes everywhere in the app keep working unchanged.
  */
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-sans',
+});
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-display',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -50,16 +74,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        {/* Preconnect to Google Fonts for faster first paint of display type */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
-        />
-      </head>
+    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body>{children}</body>
     </html>
   );
