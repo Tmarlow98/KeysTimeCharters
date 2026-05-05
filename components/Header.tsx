@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { site } from '@/lib/site';
 
 const NAV = [
@@ -17,12 +17,27 @@ const NAV = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
 
+  /**
+   * Detect "scrolled past hero" with an IntersectionObserver instead of a
+   * scroll listener. The sentinel is a 1px element absolutely positioned at
+   * the very top of the document — when the user scrolls past it, the
+   * observer fires once and toggles state. Two wins over a scroll listener:
+   *   1. The browser handles visibility on a separate, optimized pass
+   *      (no JS runs per-frame), which lowers Total Blocking Time on mobile.
+   *   2. The callback fires on transitions only, not on every scroll tick.
+   */
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setScrolled(!entry.isIntersecting),
+      { threshold: 0 },
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
   }, []);
 
   // Close mobile drawer when route changes via hash / link click
@@ -36,6 +51,12 @@ export default function Header() {
 
   return (
     <>
+    {/* Sentinel for IntersectionObserver — sits at document top, scrolls with the page. */}
+    <div
+      ref={sentinelRef}
+      aria-hidden="true"
+      className="pointer-events-none absolute left-0 top-0 h-px w-px"
+    />
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled
