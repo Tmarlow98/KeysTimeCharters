@@ -185,4 +185,4 @@ Each one composes `Header`, `Footer`, `SectionHeading`, `TripCard`, and `Booking
 
 ## License
 
-© Keys Time Charters LLC.
+© Keys Time Charters, Inc.
