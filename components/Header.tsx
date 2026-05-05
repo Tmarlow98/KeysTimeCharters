@@ -35,6 +35,7 @@ export default function Header() {
   }, [open]);
 
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled
@@ -101,30 +102,32 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile drawer */}
-      {open && (
-        <div
-          className="fixed inset-0 top-16 z-40 bg-sand-50 px-5 py-8 md:hidden"
-          role="dialog"
-          aria-modal="true"
-        >
-          <nav aria-label="Mobile" className="flex flex-col gap-1">
-            {NAV.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="rounded-xl px-4 py-3 text-lg font-medium text-ink-900 transition hover:bg-ink-50"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <a href={site.phoneHref} onClick={() => setOpen(false)} className="btn-primary mt-4">
-              Call {site.phone}
-            </a>
-          </nav>
-        </div>
-      )}
     </header>
+
+    {/* Mobile drawer — rendered outside <header> so it gets its own global z-index */}
+    {open && (
+      <div
+        className="fixed inset-0 top-16 z-[100] bg-sand-50 px-5 py-8 md:hidden overflow-y-auto"
+        role="dialog"
+        aria-modal="true"
+      >
+        <nav aria-label="Mobile" className="flex flex-col gap-1">
+          {NAV.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="rounded-xl px-4 py-3 text-lg font-medium text-ink-900 transition hover:bg-ink-50"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <a href={site.phoneHref} onClick={() => setOpen(false)} className="btn-primary mt-4">
+            Call {site.phone}
+          </a>
+        </nav>
+      </div>
+    )}
+    </>
   );
 }
