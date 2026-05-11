@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
+import Script from 'next/script';
 import { site } from '@/lib/site';
 import './globals.css';
 
@@ -75,7 +76,16 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-6S2KMD5TB9" strategy="afterInteractive" />
+        <Script id="ga" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-6S2KMD5TB9');
+        `}</Script>
+      </body>
     </html>
   );
 }
