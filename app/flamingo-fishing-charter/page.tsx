@@ -5,8 +5,11 @@ import BookingCTA from '@/components/BookingCTA';
 import SectionHeading from '@/components/SectionHeading';
 import TripCard from '@/components/TripCard';
 import CallToBook from '@/components/CallToBook';
+import FAQ from '@/components/FAQ';
 import { TRIPS } from '@/lib/trips';
 import { site } from '@/lib/site';
+import { faqSchema } from '@/lib/seo';
+import type { FAQItem } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Flamingo Fishing Charter | Everglades National Park',
@@ -29,6 +32,29 @@ export const metadata: Metadata = {
 
 const RELATED = TRIPS.filter((t) => t.href !== '/flamingo-fishing-charter');
 
+const FLAMINGO_FAQS: FAQItem[] = [
+  {
+    question: 'What fish can we catch on a Flamingo charter?',
+    answer:
+      'Tarpon, snook, redfish, and sea trout are the primary targets. Migratory tarpon move through the passes and basins from spring into early summer; resident snook hold in the creek mouths year round; redfish tail across the bay banks and grass flats. Every trip is built around whatever is actively eating that week.',
+  },
+  {
+    question: 'When is the best time for tarpon near Flamingo?',
+    answer:
+      'Migratory tarpon season runs roughly April through early July, when fish stage and roll through the passes and basins near Flamingo. Resident juvenile tarpon are in the creeks year round — if you want a backcountry tarpon shot outside of peak migration, ask about it when you book.',
+  },
+  {
+    question: 'Are fish catch-and-release in Everglades National Park?',
+    answer:
+      'Captain Tyler practices responsible catch-and-release for snook, redfish, tarpon, and other sportfish unless current regulations and trip conditions allow otherwise. Rules vary by species, season, and area inside or outside Everglades National Park. If you hope to keep fish, ask before the trip so the plan stays compliant with current FWC and National Park Service rules.',
+  },
+  {
+    question: 'How do I book a Flamingo charter?',
+    answer:
+      'Call or email with your dates and group size. We will tell you what is fishing well for your window, confirm which trip fits the plan, and lock in all details — ramp location, tide window, and exact meeting time — a few days before you arrive.',
+  },
+];
+
 export default function FlamingoPage() {
   return (
     <>
@@ -48,7 +74,7 @@ export default function FlamingoPage() {
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-900/80 via-ink-900/30 to-transparent" />
           <div className="container-prose pb-14 pt-32 text-white">
             <span className="eyebrow !text-flats-200">Everglades National Park</span>
-            <h1 id="flamingo-hero-title" className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+            <h1 id="flamingo-hero-title" className="mt-4 font-display text-4xl font-semibold leading-tight text-white drop-shadow-lg sm:text-5xl md:text-6xl">
               Flamingo Fishing Charter
             </h1>
             <p className="mt-4 max-w-xl text-lg text-white/85">
@@ -136,12 +162,27 @@ export default function FlamingoPage() {
             <div className="mt-10 grid gap-6 md:grid-cols-2">
               {RELATED.map((trip) => <TripCard key={trip.href} trip={trip} />)}
             </div>
+            <p className="mt-8 text-sm text-ink-600">
+              See recent conditions from Flamingo and Florida Bay in the{' '}
+              <a href="/fishing-reports" className="font-medium text-flats-600 underline-offset-2 hover:underline">
+                fishing reports
+              </a>
+              .
+            </p>
           </div>
         </section>
 
+        <FAQ faqs={FLAMINGO_FAQS} />
         <BookingCTA />
       </main>
       <Footer />
+
+      {/* JSON-LD: FAQPage */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(FLAMINGO_FAQS)) }}
+      />
     </>
   );
 }

@@ -4,16 +4,19 @@ import Footer from '@/components/Footer';
 import BookingCTA from '@/components/BookingCTA';
 import SectionHeading from '@/components/SectionHeading';
 import CallToBook from '@/components/CallToBook';
+import FAQ from '@/components/FAQ';
 import { site } from '@/lib/site';
+import { faqSchema } from '@/lib/seo';
+import type { FAQItem } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Fishing Charter Prices | Keys Time Charters',
   description:
-    'Florida Keys and Flamingo fishing charter pricing — 4, 6, and 8-hour private trips. All gear and tackle included. Call to check availability.',
+    'Florida Keys and Flamingo fishing charter pricing — 4-hour $600, 6-hour $700, 8-hour $800. Private trips, all gear included. Call to check availability.',
   alternates: { canonical: `${site.url}/pricing` },
   openGraph: {
     title: 'Fishing Charter Prices | Keys Time Charters',
-    description: '4, 6, and 8-hour private fishing charter pricing for the Florida Keys and Flamingo.',
+    description: '4-hour $600, 6-hour $700, 8-hour $800 — private fishing charters in the Florida Keys and Flamingo.',
     url: `${site.url}/pricing`,
   },
   keywords: ['florida keys fishing charter prices', 'flamingo fishing charter cost', 'everglades fishing charter rates', 'how much does a fishing charter cost florida keys'],
@@ -22,21 +25,22 @@ export const metadata: Metadata = {
 const TRIPS_PRICING = [
   {
     label: '4-Hour Trip',
-    price: '$650',
-    ideal: 'First-timers, half-day schedules, or anglers with young kids',
-    description: 'A focused morning or afternoon targeting one area and species. Plenty of time to get on fish and work the bite.',
+    price: '$600',
+    ideal: 'First-timers, families, or a tight morning window',
+    description: 'A focused half-day hitting one area hard. Ideal for early risers who want to be off the water before the heat sets in.',
   },
   {
     label: '6-Hour Trip',
-    price: '$750',
-    ideal: 'Most popular — covers more water and species',
-    description: 'The most popular option. Enough time to run multiple spots, adjust to the conditions, and give the fish a real chance to turn on.',
+    price: '$700',
+    ideal: 'Best for covering more water and working multiple species',
+    description: 'The sweet spot. Enough time to run spots, adjust to the conditions, and give the fish a real chance to cooperate.',
+    featured: true,
   },
   {
     label: '8-Hour Trip',
-    price: '$900',
-    ideal: 'Full-day explorers and serious anglers',
-    description: 'A full day on the water. Best for anglers targeting migratory tarpon, covering multiple fisheries, or just wanting the most time.',
+    price: '$800',
+    ideal: 'Serious anglers and full-day explorers',
+    description: 'A full day on the water. Best for targeting migratory tarpon, covering multiple fisheries, or just not wanting the trip to end.',
   },
 ];
 
@@ -44,7 +48,7 @@ const INCLUDED = [
   'All rods, reels, and tackle',
   'Live and artificial bait',
   'Fuel and boat fees',
-  'Fish cleaning and filleting',
+  'Fish cleaning and filleting for all legally harvested fish (FWC regulations)',
   'Cold drinking water on board',
   'Florida saltwater fishing license',
   'Expert local guide',
@@ -55,6 +59,39 @@ const NOT_INCLUDED = [
   'Food and personal snacks',
 ];
 
+const PRICING_FAQS: FAQItem[] = [
+  {
+    question: 'What is included in the charter price?',
+    answer:
+      'All rods, reels, tackle, live and artificial bait, fuel and boat fees, cold water on board, fishing license coverage under the charter vessel, and fish cleaning and filleting for any legal harvest. Rates cover up to 2 anglers; a third angler is an additional $100. See the full breakdown above.',
+  },
+  {
+    question: 'How many people can fish on one charter?',
+    answer:
+      'Up to 3 anglers per charter. Rates above cover up to 2 anglers. A third angler is welcome for an additional $100. All trips are private — your group only.',
+  },
+  {
+    question: 'Is a deposit required to book?',
+    answer:
+      'Yes. A deposit holds your date. We will confirm all details — ramp location, tide window, and exact meeting time — a few days before the trip.',
+  },
+  {
+    question: 'What if the weather is bad?',
+    answer:
+      'Trips cancelled due to unsafe weather are rescheduled at no charge. We will stay in contact as your date approaches and communicate early if conditions look questionable.',
+  },
+  {
+    question: 'Is fish cleaning included?',
+    answer:
+      "Fish cleaning and filleting is included on every trip. Keep as many fish as you'd like within FWC regulations — we'll take care of the rest.",
+  },
+  {
+    question: 'Is gratuity included?',
+    answer:
+      'Gratuity is not included in the charter price. It is customary and appreciated for a good day on the water.',
+  },
+];
+
 export default function PricingPage() {
   return (
     <>
@@ -62,13 +99,13 @@ export default function PricingPage() {
       <main id="main">
 
         {/* Header section */}
-        <section aria-labelledby="pricing-title" className="bg-ink-900 py-20 pt-32 text-white md:py-28 md:pt-40">
+        <section aria-labelledby="pricing-title" className="bg-ink-900 pb-16 pt-28 text-white md:pb-20 md:pt-36">
           <div className="container-prose">
-            <span className="eyebrow !text-flats-200">Private Charters Only</span>
-            <h1 id="pricing-title" className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+            <span className="eyebrow !text-flats-300">Private Charters Only</span>
+            <h1 id="pricing-title" className="mt-3 font-display text-4xl font-semibold leading-tight text-white sm:text-5xl md:text-6xl">
               Charter Pricing
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-white/80">
+            <p className="mt-4 max-w-2xl text-lg text-white/75">
               All trips are private — your group on the boat, no strangers. Rates below cover the full charter. Call to confirm availability and pick a date.
             </p>
           </div>
@@ -77,29 +114,36 @@ export default function PricingPage() {
         {/* Price cards */}
         <section aria-labelledby="pricing-cards" className="bg-sand-50 py-20 md:py-28">
           <div className="container-prose">
-            <div className="grid gap-6 md:grid-cols-3">
-              {TRIPS_PRICING.map((trip, i) => (
+            <div className="grid gap-6 md:grid-cols-3 md:items-start">
+              {TRIPS_PRICING.map((trip) => (
                 <div
                   key={trip.label}
-                  className={`flex flex-col rounded-2xl border p-8 ${
-                    i === 1
-                      ? 'border-flats-500 bg-white shadow-lg ring-1 ring-flats-500'
-                      : 'border-ink-100 bg-white shadow-card'
+                  className={`flex flex-col rounded-2xl border p-8 ${'featured' in trip && trip.featured
+                    ? 'border-transparent bg-ink-900 shadow-xl'
+                    : 'border-ink-100 bg-white shadow-card'
                   }`}
                 >
-                  {i === 1 && (
-                    <span className="mb-4 inline-block self-start rounded-full bg-flats-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-flats-700">
+                  {'featured' in trip && trip.featured && (
+                    <span className="mb-4 inline-block self-start rounded-full bg-flats-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-flats-300">
                       Most Popular
                     </span>
                   )}
-                  <p className="text-sm font-semibold uppercase tracking-widest text-ink-500">{trip.label}</p>
-                  <p className="mt-3 font-display text-5xl font-semibold text-ink-900">{trip.price}</p>
-                  <p className="mt-1 text-sm text-ink-500">per charter · private group</p>
-                  <p className="mt-4 text-sm leading-relaxed text-ink-700">{trip.description}</p>
-                  <p className="mt-3 text-xs text-ink-500">
-                    <span className="font-medium text-ink-700">Best for:</span> {trip.ideal}
+                  <p className={`text-sm font-semibold uppercase tracking-widest ${'featured' in trip && trip.featured ? 'text-white/50' : 'text-ink-400'}`}>
+                    {trip.label}
                   </p>
-                  <CallToBook className="btn-primary mt-8 text-center" />
+                  <p className={`mt-3 font-display text-5xl font-semibold ${'featured' in trip && trip.featured ? 'text-white' : 'text-ink-900'}`}>
+                    {trip.price}
+                  </p>
+                  <p className={`mt-1 text-sm ${'featured' in trip && trip.featured ? 'text-white/40' : 'text-ink-400'}`}>
+                    per charter · up to 2 anglers
+                  </p>
+                  <p className={`mt-5 text-sm leading-relaxed ${'featured' in trip && trip.featured ? 'text-white/70' : 'text-ink-600'}`}>
+                    {trip.description}
+                  </p>
+                  <p className={`mt-3 text-xs ${'featured' in trip && trip.featured ? 'text-white/50' : 'text-ink-400'}`}>
+                    <span className={`font-medium ${'featured' in trip && trip.featured ? 'text-white/70' : 'text-ink-600'}`}>Best for:</span> {trip.ideal}
+                  </p>
+                  <CallToBook className={`mt-8 text-center ${'featured' in trip && trip.featured ? 'btn-outline-white' : 'btn-primary'}`} />
                 </div>
               ))}
             </div>
@@ -146,12 +190,23 @@ export default function PricingPage() {
             <div className="mt-10 rounded-2xl bg-flats-50 p-6 text-sm text-ink-700">
               <strong className="text-ink-900">Booking note:</strong> A deposit is required to hold your date. We&apos;ll confirm all details — ramp location, tide window, and exact time — a few days before your trip. Cancellations due to unsafe weather are rescheduled at no charge.
             </div>
+            <div className="mt-4 rounded-2xl bg-flats-50 p-6 text-sm text-ink-700">
+              <strong className="text-ink-900">Group size:</strong> Rates above are for up to 2 anglers. A third angler is welcome for an additional $100. Maximum 3 anglers per charter.
+            </div>
           </div>
         </section>
 
+        <FAQ faqs={PRICING_FAQS} />
         <BookingCTA />
       </main>
       <Footer />
+
+      {/* JSON-LD: FAQPage */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(PRICING_FAQS)) }}
+      />
     </>
   );
 }

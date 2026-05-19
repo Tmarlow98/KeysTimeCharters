@@ -5,8 +5,11 @@ import BookingCTA from '@/components/BookingCTA';
 import SectionHeading from '@/components/SectionHeading';
 import TripCard from '@/components/TripCard';
 import CallToBook from '@/components/CallToBook';
+import FAQ from '@/components/FAQ';
 import { TRIPS } from '@/lib/trips';
 import { site } from '@/lib/site';
+import { faqSchema } from '@/lib/seo';
+import type { FAQItem } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Backcountry Fishing Charter | Florida Bay & Everglades',
@@ -29,6 +32,29 @@ export const metadata: Metadata = {
 
 const RELATED = TRIPS.filter((t) => t.href !== '/backcountry-fishing-everglades');
 
+const BACKCOUNTRY_FAQS: FAQItem[] = [
+  {
+    question: 'What is the difference between a backcountry trip and the Flamingo charter?',
+    answer:
+      'Both trips run out of the same area on the same flats skiff, but the emphasis differs. The Flamingo charter focuses on the creek system and basins closest to Flamingo Marina — tarpon in spring and early summer, snook and redfish year round in a more targeted pattern. The backcountry trip covers more of Florida Bay: mangrove keys, oyster bars, and tidal creeks, with a mixed-bag approach to redfish, snook, and sea trout.',
+  },
+  {
+    question: 'Are fish catch-and-release in Everglades National Park?',
+    answer:
+      'Captain Tyler practices responsible catch-and-release for snook, redfish, tarpon, and other sportfish unless current regulations and trip conditions allow otherwise. Rules vary by species, season, and area inside or outside Everglades National Park. If you hope to keep fish, ask before the trip so the plan stays compliant with current FWC and National Park Service rules.',
+  },
+  {
+    question: 'Do I need saltwater fishing experience for a backcountry trip?',
+    answer:
+      'No. The backcountry is a great first saltwater fishing experience — multiple species, forgiving presentations, and plenty of shots at fish on most days. We provide all the gear and coach anyone who wants casting or rigging tips.',
+  },
+  {
+    question: 'Where does the backcountry charter depart from?',
+    answer:
+      'Usually from Flamingo Marina or a Keys-area ramp depending on the plan and what is fishing well. Exact ramp and meeting instructions are confirmed a few days before your trip.',
+  },
+];
+
 export default function BackcountryPage() {
   return (
     <>
@@ -42,13 +68,13 @@ export default function BackcountryPage() {
         >
           <div
             aria-hidden="true"
-            className="absolute inset-0 -z-10 bg-cover bg-center"
-            style={{ backgroundImage: 'url("/images/trips/backcountry.jpg"), linear-gradient(135deg,#0b2238,#1f4361)' }}
+            className="absolute inset-0 -z-10 bg-cover"
+            style={{ backgroundImage: 'url("/images/redfish-background.jpg"), linear-gradient(135deg,#0b2238,#1f4361)', backgroundPosition: 'center 72%' }}
           />
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-ink-900/80 via-ink-900/30 to-transparent" />
           <div className="container-prose pb-14 pt-32 text-white">
             <span className="eyebrow !text-flats-200">Florida Bay</span>
-            <h1 id="backcountry-hero-title" className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+            <h1 id="backcountry-hero-title" className="mt-4 font-display text-4xl font-semibold leading-tight text-white drop-shadow-lg sm:text-5xl md:text-6xl">
               Backcountry Fishing Charter
             </h1>
             <p className="mt-4 max-w-xl text-lg text-white/85">
@@ -136,12 +162,34 @@ export default function BackcountryPage() {
             <div className="mt-10 grid gap-6 md:grid-cols-2">
               {RELATED.map((trip) => <TripCard key={trip.href} trip={trip} />)}
             </div>
+            <p className="mt-8 text-sm text-ink-600">
+              See recent conditions from Florida Bay and the Everglades backcountry in the{' '}
+              <a href="/fishing-reports" className="font-medium text-flats-600 underline-offset-2 hover:underline">
+                fishing reports
+              </a>
+              .
+            </p>
           </div>
         </section>
 
+        <FAQ faqs={BACKCOUNTRY_FAQS} />
         <BookingCTA />
       </main>
       <Footer />
+
+      {/*
+        JSON-LD: FAQPage — catch-and-release Q (index 1) is visible above but excluded from schema
+        because substantively identical markup already lives on the Flamingo page.
+      */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            faqSchema([BACKCOUNTRY_FAQS[0], BACKCOUNTRY_FAQS[2], BACKCOUNTRY_FAQS[3]])
+          ),
+        }}
+      />
     </>
   );
 }

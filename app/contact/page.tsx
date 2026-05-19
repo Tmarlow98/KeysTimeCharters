@@ -2,7 +2,10 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SectionHeading from '@/components/SectionHeading';
+import FAQ from '@/components/FAQ';
 import { site } from '@/lib/site';
+import { faqSchema } from '@/lib/seo';
+import type { FAQItem } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Contact & Book a Charter | Keys Time Charters',
@@ -17,6 +20,29 @@ export const metadata: Metadata = {
   keywords: ['book florida keys fishing charter', 'contact keys time charters', 'flamingo fishing charter booking'],
 };
 
+const CONTACT_FAQS: FAQItem[] = [
+  {
+    question: 'How do I book a charter?',
+    answer:
+      'Call or email with your preferred dates, group size, and what you want to fish for. We do not use an online booking form — a quick conversation gets everything confirmed faster and lets us give you an honest read on conditions for your dates.',
+  },
+  {
+    question: 'How far in advance should I book a Flamingo or Keys charter?',
+    answer:
+      'For Flamingo backcountry and Keys flats trips during peak season — spring tarpon migration through summer — booking 3 to 6 weeks ahead is typical. Fall and winter have more open dates. If you are flexible on exact timing, a call a week or two out can often get you on the water.',
+  },
+  {
+    question: 'What if I need to cancel or weather forces a change?',
+    answer:
+      'Trips cancelled due to unsafe weather are rescheduled at no charge. For cancellations on the guest side, ask about the deposit terms when you book. We work with you where we can.',
+  },
+  {
+    question: 'What information should I have ready when I call?',
+    answer:
+      'Your trip dates or preferred date range, group size, where you are coming from, and any species you specifically want to target. If you are not sure what trip fits your group, we can figure that out together on the call.',
+  },
+];
+
 const STEPS = [
   { step: '01', heading: 'Reach out', body: 'Call or email with your dates, group size, and what you want to fish for. No booking form — a quick conversation gets everything sorted faster.' },
   { step: '02', heading: 'We talk through the plan', body: 'We\'ll tell you honestly what\'s fishing well for your dates, which trip fits your group, and what to realistically expect.' },
@@ -30,13 +56,13 @@ export default function ContactPage() {
       <main id="main">
 
         {/* Header */}
-        <section aria-labelledby="contact-title" className="bg-ink-900 py-20 pt-32 text-white md:py-28 md:pt-40">
+        <section aria-labelledby="contact-title" className="bg-ink-900 pb-16 pt-28 text-white md:pb-20 md:pt-36">
           <div className="container-prose">
-            <span className="eyebrow !text-flats-200">Get in Touch</span>
-            <h1 id="contact-title" className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+            <span className="eyebrow !text-flats-300">Get in Touch</span>
+            <h1 id="contact-title" className="mt-3 font-display text-4xl font-semibold leading-tight text-white sm:text-5xl md:text-6xl">
               Book a Charter
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-white/80">
+            <p className="mt-4 max-w-2xl text-lg text-white/75">
               Call or email to check dates, ask questions, or get a recommendation on which trip fits your group best. We usually respond the same day.
             </p>
 
@@ -116,8 +142,16 @@ export default function ContactPage() {
           </div>
         </section>
 
+        <FAQ faqs={CONTACT_FAQS} />
       </main>
       <Footer />
+
+      {/* JSON-LD: FAQPage */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(CONTACT_FAQS)) }}
+      />
     </>
   );
 }

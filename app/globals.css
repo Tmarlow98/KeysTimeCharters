@@ -63,6 +63,10 @@
     @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-900 px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-ink-900 transition hover:bg-ink-900 hover:text-white;
   }
 
+  .btn-outline-white {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-ink-900 transition hover:bg-sand-100;
+  }
+
   .link-quiet {
     @apply text-flats-700 underline-offset-4 transition hover:text-ink-900 hover:underline;
   }
