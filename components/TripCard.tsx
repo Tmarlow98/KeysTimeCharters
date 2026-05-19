@@ -9,6 +9,7 @@ export type Trip = {
   species: string[];
   /** Path to the trip card image (in /public/images/trips/). */
   image: string;
+  imagePosition?: string;
 };
 
 type Props = { trip: Trip };
@@ -25,7 +26,8 @@ export default function TripCard({ trip }: Props) {
           alt={`${trip.title} — ${trip.area}`}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-          className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+          className="object-cover transition duration-500 group-hover:scale-[1.03]"
+          style={{ objectPosition: trip.imagePosition ?? 'center' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900/60 via-ink-900/10 to-transparent" />
         <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-ink-800 shadow-sm">
