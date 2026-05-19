@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import TrustBar from '@/components/TrustBar';
@@ -73,6 +74,56 @@ export default function HomePage() {
         <WhatToExpect />
         <GalleryPreview />
         <Testimonials />
+
+        {/* Latest Fishing Reports */}
+        <section aria-labelledby="latest-reports-heading" className="bg-white py-20 md:py-28">
+          <div className="container-prose">
+            <span className="eyebrow">From the Water</span>
+            <h2
+              id="latest-reports-heading"
+              className="mt-4 font-display text-3xl font-semibold text-ink-900 sm:text-4xl"
+            >
+              Latest Fishing Reports
+            </h2>
+            <p className="mt-4 max-w-xl text-ink-700">
+              Real trip reports from the water — current conditions, tides, and what's been
+              biting out of Flamingo and the Everglades backcountry.
+            </p>
+            <div className="mt-10 max-w-2xl rounded-2xl border border-ink-100 bg-sand-50 p-8 shadow-card">
+              <time
+                dateTime="2026-05-17"
+                className="text-xs font-semibold uppercase tracking-widest text-flats-700"
+              >
+                May 17, 2026
+              </time>
+              <h3 className="mt-2 font-display text-xl font-semibold text-ink-900">
+                <Link
+                  href="/fishing-reports/flamingo-snook-fishing-report-may-17-2026"
+                  className="transition-colors hover:text-flats-600"
+                >
+                  Flamingo Fishing Report: Double-Digit Snook
+                </Link>
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-700">
+                A stiff east wind and late-morning low water set up a strong day of Everglades
+                backcountry fishing out of Flamingo — double-digit snook and a shot at redfish.
+              </p>
+              <Link
+                href="/fishing-reports/flamingo-snook-fishing-report-may-17-2026"
+                className="mt-4 inline-block text-sm font-medium text-flats-600 transition-colors hover:text-flats-700"
+              >
+                Read the full report →
+              </Link>
+            </div>
+            <Link
+              href="/fishing-reports"
+              className="mt-6 inline-block text-sm font-medium text-ink-500 transition-colors hover:text-ink-900"
+            >
+              All fishing reports →
+            </Link>
+          </div>
+        </section>
+
         <BookingCTA />
         <FAQ />
       </main>

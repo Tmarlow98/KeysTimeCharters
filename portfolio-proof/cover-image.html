@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!--
+  Keys Time Charters — Upwork portfolio cover image
+  ----------------------------------------------------------------
+  HOW TO TURN THIS INTO A PNG
+  1. Open this file in Chrome (double-click or drag into a tab).
+  2. The cover (1200×800) renders centered on a dark backdrop.
+  3. Open DevTools (F12) → Cmd/Ctrl+Shift+P → type "screenshot"
+     → pick "Capture node screenshot" → click the cover element.
+     OR: take a clean 1200×800 screenshot with Win+Shift+S.
+  4. The exported PNG is the file you upload to Upwork.
+
+  HOW TO EDIT
+  - Headline + metrics are inline near the bottom of <body>.
+  - Brand colors are CSS custom properties at the top of <style>.
+  - Image paths are RELATIVE — keep this file in the same folder
+    as before_screenshot.jfif and homepage_metrics_and_score.jfif.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Keys Time Charters — Cover Image</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+  />
+  <style>
+    :root {
+      --ink-900: #0b2238;
+      --ink-700: #163149;
+      --ink-600: #1f4361;
+      --flats-200: #b6dcd5;
+      --flats-300: #8cc6bd;
+      --flats-400: #5da9a1;
+      --sand-50: #faf8f3;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: #050d18;
+      min-height: 100vh;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    /* The actual exportable surface — 1200×800 — fixed. */
+    .cover {
+      width: 1200px;
+      height: 800px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--ink-900) 0%, var(--ink-600) 100%);
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px; /* purely for browser preview; ignore in screenshot */
+    }
+
+    /* Subtle radial accent in the brand color */
+    .cover::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(55% 45% at 85% 0%, rgba(93, 169, 161, 0.30), transparent 65%),
+        radial-gradient(45% 45% at 0% 100%, rgba(93, 169, 161, 0.18), transparent 65%);
+    }
+
+    /* Layout grid: header / panels / stats / footer */
+    .cover {
+      display: grid;
+      grid-template-rows: auto 1fr auto auto;
+      padding: 56px 60px 36px;
+    }
+
+    /* ---------- HEADER ---------- */
+    .eyebrow {
+      color: var(--flats-200);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .title {
+      margin-top: 12px;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 44px;
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      max-width: 920px;
+    }
+    .title .accent { color: var(--flats-300); }
+
+    /* ---------- PANELS ---------- */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 64px 1fr;
+      align-items: center;
+      gap: 0;
+      margin-top: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .panel {
+      position: relative;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16 / 11;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.05) inset,
+        0 24px 60px rgba(0, 0, 0, 0.45),
+        0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+    .panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    /* The "before" image is a tight horizontal strip of 4 circles; using
+       `contain` keeps all of them visible (Performance 65 included) instead
+       of cropping the ends like `cover` does. */
+    .panel.panel-before img {
+      object-fit: contain;
+      object-position: center center;
+      padding: 24px 20px;
+    }
+    .panel-label {
+      position: absolute;
+      top: -30px;
+      left: 0;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+    .panel-label.after { color: var(--flats-300); }
+
+    .arrow {
+      text-align: center;
+      color: var(--flats-300);
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 300;
+    }
+
+    /* ---------- STATS ---------- */
+    .stats {
+      position: relative;
+      z-index: 1;
+      margin-top: 32px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      gap: 40px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+    .stat-value {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .stat-value .accent { color: var(--flats-300); }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .brand {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.005em;
+    }
+    .stack {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    EDIT THE TEXT/IMAGES HERE
+    Image filenames are taken straight from your portfolio-proof folder.
+  -->
+  <div class="cover" id="cover">
+    <header>
+      <p class="eyebrow">Lighthouse · keystimecharters.com</p>
+      <h1 class="title">
+        Mobile LCP: 17.2&thinsp;s <span class="accent">→ 2.7&thinsp;s</span>.<br>
+        Same site, real-world build, <span class="accent">84% faster.</span>
+      </h1>
+    </header>
+
+    <div class="compare">
+      <div class="panel panel-before">
+        <span class="panel-label">Before</span>
+        <img src="before-circles.png" alt="Lighthouse mobile score before optimization" />
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="panel">
+        <span class="panel-label after">After</span>
+        <img src="homepage metrics and score.jfif" alt="Lighthouse mobile score after optimization" />
+      </div>
+    </div>
+
+    <section class="stats">
+      <div class="stat">
+        <span class="stat-label">Performance</span>
+        <span class="stat-value">65 <span class="accent">→ 74</span></span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">SEO</span>
+        <span class="stat-value">92 <span class="accent">→ 100</span></span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Page Weight</span>
+        <span class="stat-value">21.8 MB <span class="accent">→ 5 MB</span></span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Desktop Score</span>
+        <span class="stat-value"><span class="accent">98</span> Performance</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span class="brand">Keys Time Charters</span>
+      <span class="stack">Next.js · Tailwind · Netlify · Cloudflare</span>
+    </footer>
+  </div>
+</body>
+</html>

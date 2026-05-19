@@ -1,0 +1,39 @@
+PS C:\dev\Keys Time Charters Website> npm run optimize-images
+
+> keys-time-charters@1.0.0 optimize-images
+> node scripts/optimize-images.mjs
+
+Optimizing JPGs in C:\dev\Keys Time Charters Website\public\images
+
+  captain-hero.jpg                       2.34 MB →     698 KB  (−71%)
+  captain-tyler.jpg                       922 KB →     359 KB  (−61%)
+  cta-bg.jpg                             2.85 MB →     308 KB  (−89%)
+  gallery\gallery-01.jpg                 2.85 MB →     308 KB  (−89%)
+  gallery\gallery-02.jpg                  898 KB →     413 KB  (−54%)
+  gallery\gallery-03.jpg                 3.87 MB →     465 KB  (−88%)
+  gallery\gallery-04.jpg                 2.61 MB →     374 KB  (−86%)
+  gallery\gallery-05.jpg                  887 KB →     227 KB  (−74%)
+  gallery\gallery-06.jpg                 2.76 MB →     466 KB  (−84%)
+  gallery\gallery-07.jpg                 2.41 MB →     371 KB  (−85%)
+  gallery\gallery-08.jpg                 1.98 MB →     213 KB  (−89%)
+  gallery\gallery-09.jpg                 2.31 MB →     460 KB  (−81%)
+  gallery\gallery-10.jpg                 2.46 MB →     513 KB  (−80%)
+  gallery\gallery-11.jpg                 2.54 MB →     503 KB  (−81%)
+  gallery\gallery-12.jpg                  414 KB →     160 KB  (−61%)
+  gallery\gallery-13.jpg                 3.53 MB →     608 KB  (−83%)
+  gallery\gallery-14.jpg                 3.31 MB →     353 KB  (−90%)
+  gallery\gallery-15.jpg                 2.95 MB →     308 KB  (−90%)
+  gallery\gallery-16.jpg                 2.80 MB →     331 KB  (−88%)
+  gallery\gallery-17.jpg                 3.07 MB →     191 KB  (−94%)
+  gallery\gallery-18.jpg                 3.61 MB →     410 KB  (−89%)
+  gallery\gallery-19.jpg                 3.87 MB →     530 KB  (−87%)
+  hero-flats.jpg                         2.85 MB →     308 KB  (−89%)
+  og-cover.jpg                           2.85 MB →     308 KB  (−89%)
+  trips\backcountry.jpg                  2.61 MB →     374 KB  (−86%)
+  trips\flamingo.jpg                      898 KB →     413 KB  (−54%)
+  trips\keys-flats.jpg                    887 KB →     227 KB  (−74%)
+
+27 files optimized
+Total: 65.21 MB → 9.96 MB  (−85%)
+
+PS C:\dev\Keys Time Charters Website>

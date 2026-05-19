@@ -10,6 +10,7 @@ const NAV_TRIPS = [
 const NAV_INFO = [
   { href: '/meet-your-captain', label: 'Meet the Captain' },
   { href: '/pricing', label: 'Pricing' },
+  { href: '/fishing-reports', label: 'Fishing Reports' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/contact', label: 'Contact' },
 ];
