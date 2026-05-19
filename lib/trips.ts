@@ -17,7 +17,8 @@ export const TRIPS: Trip[] = [
     blurb:
       'Sight-fishing on hard sand and turtle grass — bonefish on the flats, permit on the edges, and shots at rolling tarpon when the season lines up.',
     species: ['Bonefish', 'Tarpon', 'Permit'],
-    image: '/images/trips/keys-flats.jpg',
+    image: '/images/snook-background.jpg',
+    imagePosition: 'center 15%',
   },
   {
     href: '/backcountry-fishing-everglades',
@@ -26,6 +27,6 @@ export const TRIPS: Trip[] = [
     blurb:
       'Skinny water across Florida Bay basins, mangrove keys, and oyster bars. Perfect for anglers who want variety and a quieter, technical day.',
     species: ['Redfish', 'Snook', 'Trout'],
-    image: '/images/trips/backcountry.jpg',
+    image: '/images/redfish-background.jpg',
   },
 ];

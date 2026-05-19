@@ -12,7 +12,22 @@
       "Bash(Select-Object FullName)",
       "PowerShell(head -50)",
       "Bash(npm run *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(Get-ChildItem -Path 'c:\\\\dev\\\\Keys Time Charters Website')",
+      "Bash(Select-Object Name, FullName)",
+      "Bash(Get-ChildItem -Path \"c:\\\\dev\\\\Keys Time Charters Website\" -Recurse -Directory)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Get-ChildItem -Path \"c:\\\\dev\\\\Keys Time Charters Website\" -Name)",
+      "Bash(python -c ' *)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 3002 -State Listen | Select-Object -ExpandProperty OwningProcess | ForEach-Object { Stop-Process -Id $_ -Force; \"Killed PID $_\" })",
+      "Bash(xargs grep -l \"Header\")",
+      "Bash(xargs grep -n \"^.*section.*className.*bg-sand-50\\\\|^.*section.*className.*bg-white\")",
+      "Bash(sed -n '50,130p' app/meet-your-captain/page.tsx)",
+      "Bash(sed -n '50,120p' app/pricing/page.tsx)",
+      "Bash(Get-ChildItem \"c:\\\\dev\\\\Keys Time Charters Website\\\\public\\\\images\" -File)",
+      "Bash(Sort-Object LastWriteTime -Descending)",
+      "Bash(Select-Object Name, LastWriteTime)",
+      "Bash(Get-ChildItem \"c:\\\\dev\\\\Keys Time Charters Website\\\\public\\\\images\\\\\")"
     ]
   }
 }
