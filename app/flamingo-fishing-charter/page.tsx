@@ -8,7 +8,7 @@ import CallToBook from '@/components/CallToBook';
 import FAQ from '@/components/FAQ';
 import { TRIPS } from '@/lib/trips';
 import { site } from '@/lib/site';
-import { faqSchema } from '@/lib/seo';
+import { faqSchema, serviceSchema } from '@/lib/seo';
 import type { FAQItem } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -84,6 +84,12 @@ export default function FlamingoPage() {
               <CallToBook className="btn-primary bg-flats-500 hover:bg-flats-600" />
               <a href={site.emailHref} className="btn-secondary">Email Us</a>
             </div>
+            <p className="mt-3 text-sm text-white/60">
+              Starting at $600 for a 4-hour private trip —{' '}
+              <a href="/pricing" className="underline underline-offset-2 transition-colors hover:text-white/80">
+                see all pricing
+              </a>
+            </p>
           </div>
         </section>
 
@@ -105,6 +111,11 @@ export default function FlamingoPage() {
                   </p>
                   <p>
                     All charters are private — just your group on the boat. We run a Maverick flats skiff, purpose-built for the skinny water around Flamingo, and provide all rods, reels, tackle, and bait.
+                  </p>
+                  <p className="text-sm">
+                    <a href="/meet-your-captain" className="font-medium text-flats-600 transition-colors hover:text-flats-700">
+                      Meet Captain Tyler →
+                    </a>
                   </p>
                 </div>
               </div>
@@ -169,6 +180,15 @@ export default function FlamingoPage() {
               </a>
               .
             </p>
+            <p className="mt-4 text-sm text-ink-600">
+              Related guides:{' '}
+              <a href="/best-time-to-fish-flamingo" className="font-medium text-flats-600 underline-offset-2 hover:underline">Best time to fish Flamingo</a>
+              {', '}
+              <a href="/flamingo-tarpon-fishing" className="font-medium text-flats-600 underline-offset-2 hover:underline">Flamingo tarpon fishing guide</a>
+              {', '}
+              <a href="/everglades-snook-fishing" className="font-medium text-flats-600 underline-offset-2 hover:underline">Everglades snook fishing guide</a>
+              .
+            </p>
           </div>
         </section>
 
@@ -180,8 +200,30 @@ export default function FlamingoPage() {
       {/* JSON-LD: FAQPage */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(FLAMINGO_FAQS)) }}
+      />
+      {/* JSON-LD: Service */}
+      <script
+        type="application/ld+json"
+         
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            serviceSchema({
+              name: 'Flamingo Fishing Charter',
+              description:
+                'Private fishing charters out of Flamingo in Everglades National Park. Tarpon, snook, and redfish in the backcountry with a local guide who fishes it year round.',
+              url: `${site.url}/flamingo-fishing-charter`,
+              image: `${site.url}/images/trips/flamingo.jpg`,
+              areaServed: ['Flamingo', 'Everglades National Park', 'Florida Bay'],
+              offers: [
+                { name: '4-Hour Charter', price: 600, duration: '4-hour private trip, up to 2 anglers' },
+                { name: '6-Hour Charter', price: 700, duration: '6-hour private trip, up to 2 anglers' },
+                { name: '8-Hour Charter', price: 800, duration: '8-hour private trip, up to 2 anglers' },
+              ],
+            })
+          ),
+        }}
       />
     </>
   );

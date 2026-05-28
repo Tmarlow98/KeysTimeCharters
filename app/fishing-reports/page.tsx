@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { site } from '@/lib/site';
+import { reportListSchema } from '@/lib/seo';
+import { sortedFishingReports } from '@/lib/fishing-reports';
 
 export const metadata: Metadata = {
   title: 'Florida Keys & Flamingo Fishing Reports | Keys Time Charters',
@@ -26,16 +28,13 @@ export const metadata: Metadata = {
   ],
 };
 
-const REPORTS = [
-  {
-    href: '/fishing-reports/flamingo-snook-fishing-report-may-17-2026',
-    title: 'Flamingo Fishing Report: Double-Digit Snook – May 17, 2026',
-    date: 'May 17, 2026',
-    dateTime: '2026-05-17',
-    summary:
-      'A stiff east wind and late-morning low water set up a strong day of Everglades backcountry fishing out of Flamingo — double-digit snook and a shot at redfish.',
-  },
-];
+const reports = sortedFishingReports.map((r) => ({
+  href: `/fishing-reports/${r.slug}`,
+  title: r.title,
+  date: r.date,
+  dateTime: r.datePublished,
+  summary: r.summary,
+}));
 
 export default function FishingReportsPage() {
   return (
@@ -56,7 +55,13 @@ export default function FishingReportsPage() {
               Fishing Reports
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-white/75">
-              Recent reports from Flamingo, Everglades National Park, Florida Bay, and the Keys backcountry — current conditions, tides, wind, and what's biting.
+              Recent reports from Flamingo, Everglades National Park, Florida Bay, and the Keys backcountry — current conditions, tides, wind, and what&apos;s biting. Book a{' '}
+              <Link href="/flamingo-fishing-charter" className="underline underline-offset-2 text-white/90 hover:text-white">Flamingo charter</Link>
+              ,{' '}
+              <Link href="/backcountry-fishing-everglades" className="underline underline-offset-2 text-white/90 hover:text-white">backcountry trip</Link>
+              , or{' '}
+              <Link href="/florida-keys-flats-fishing" className="underline underline-offset-2 text-white/90 hover:text-white">Keys flats day</Link>
+              .
             </p>
           </div>
         </section>
@@ -73,7 +78,7 @@ export default function FishingReportsPage() {
               Recent Reports
             </h2>
             <div className="mt-8 grid gap-5">
-              {REPORTS.map((r) => (
+              {reports.map((r) => (
                 <article
                   key={r.href}
                   className="rounded-2xl border border-ink-100 bg-white p-8 shadow-card"
@@ -109,6 +114,24 @@ export default function FishingReportsPage() {
 
       </main>
       <Footer />
+
+      {/* JSON-LD: CollectionPage + ItemList */}
+      <script
+        type="application/ld+json"
+         
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            reportListSchema(
+              reports.map((r) => ({
+                title: r.title,
+                url: `${site.url}${r.href}`,
+                datePublished: r.dateTime,
+                description: r.summary,
+              }))
+            )
+          ),
+        }}
+      />
     </>
   );
 }

@@ -4,11 +4,12 @@ import Footer from '@/components/Footer';
 import BookingCTA from '@/components/BookingCTA';
 import SectionHeading from '@/components/SectionHeading';
 import TripCard from '@/components/TripCard';
+import Link from 'next/link';
 import CallToBook from '@/components/CallToBook';
 import FAQ from '@/components/FAQ';
 import { TRIPS } from '@/lib/trips';
 import { site } from '@/lib/site';
-import { faqSchema } from '@/lib/seo';
+import { faqSchema, serviceSchema } from '@/lib/seo';
 import type { FAQItem } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -84,6 +85,12 @@ export default function KeysFlatsPage() {
               <CallToBook className="btn-primary bg-flats-500 hover:bg-flats-600" />
               <a href={site.emailHref} className="btn-secondary">Email Us</a>
             </div>
+            <p className="mt-3 text-sm text-white/60">
+              Starting at $600 for a 4-hour private trip —{' '}
+              <a href="/pricing" className="underline underline-offset-2 transition-colors hover:text-white/80">
+                see all pricing
+              </a>
+            </p>
           </div>
         </section>
 
@@ -101,10 +108,18 @@ export default function KeysFlatsPage() {
                     The Florida Keys flats are some of the most technical fishing in the world — gin-clear water, spooky fish, and presentations that have to be right the first time. We run the Upper and Middle Keys where the hard-bottom flats, turtle grass, and tidal cuts hold tarpon, snook, and redfish year round.
                   </p>
                   <p>
-                    Tarpon migrate through the Keys from April into July — these are fish over a hundred pounds and one of the best fights in saltwater. Snook hold along the mangrove edges and tidal cuts year round, especially around structure and creek mouths. Redfish tail on the grass flats and sand edges and are reliable in every season.
+                    <Link href="/flamingo-tarpon-fishing" className="font-medium text-flats-600 underline underline-offset-2 transition-colors hover:text-flats-700">Tarpon migrate</Link>{' '}
+                    through the Keys from April into July — these are fish over a hundred pounds and one of the best fights in saltwater.{' '}
+                    <Link href="/everglades-snook-fishing" className="font-medium text-flats-600 underline underline-offset-2 transition-colors hover:text-flats-700">Snook hold</Link>{' '}
+                    along the mangrove edges and tidal cuts year round, especially around structure and creek mouths. Redfish tail on the grass flats and sand edges and are reliable in every season.
                   </p>
                   <p>
                     This is a visual, athletic style of fishing — you'll be on the bow looking for fish. It suits beginners who want to learn and experienced anglers alike.
+                  </p>
+                  <p className="text-sm">
+                    <a href="/meet-your-captain" className="font-medium text-flats-600 transition-colors hover:text-flats-700">
+                      Meet Captain Tyler →
+                    </a>
                   </p>
                 </div>
               </div>
@@ -161,6 +176,19 @@ export default function KeysFlatsPage() {
             <div className="mt-10 grid gap-6 md:grid-cols-2">
               {RELATED.map((trip) => <TripCard key={trip.href} trip={trip} />)}
             </div>
+            <p className="mt-8 text-sm text-ink-600">
+              See dated fishing reports for recent patterns and conditions in the{' '}
+              <Link href="/fishing-reports" className="font-medium text-flats-600 underline-offset-2 hover:underline">fishing reports</Link>.
+            </p>
+            <p className="mt-4 text-sm text-ink-600">
+              Related guides:{' '}
+              <Link href="/flamingo-tarpon-fishing" className="font-medium text-flats-600 underline-offset-2 hover:underline">Flamingo tarpon fishing guide</Link>
+              {', '}
+              <Link href="/everglades-snook-fishing" className="font-medium text-flats-600 underline-offset-2 hover:underline">Everglades snook fishing guide</Link>
+              {', '}
+              <Link href="/best-time-to-fish-flamingo" className="font-medium text-flats-600 underline-offset-2 hover:underline">best time to fish Flamingo</Link>
+              .
+            </p>
           </div>
         </section>
 
@@ -172,8 +200,30 @@ export default function KeysFlatsPage() {
       {/* JSON-LD: FAQPage */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(KEYS_FAQS)) }}
+      />
+      {/* JSON-LD: Service */}
+      <script
+        type="application/ld+json"
+         
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            serviceSchema({
+              name: 'Florida Keys Flats Fishing Charter',
+              description:
+                'Sight-fishing charters on the Florida Keys flats — tarpon, snook, and redfish with a local guide who fishes the Upper and Middle Keys year round.',
+              url: `${site.url}/florida-keys-flats-fishing`,
+              image: `${site.url}/images/trips/keys-flats.jpg`,
+              areaServed: ['Florida Keys', 'Upper Florida Keys', 'Middle Florida Keys'],
+              offers: [
+                { name: '4-Hour Charter', price: 600, duration: '4-hour private trip, up to 2 anglers' },
+                { name: '6-Hour Charter', price: 700, duration: '6-hour private trip, up to 2 anglers' },
+                { name: '8-Hour Charter', price: 800, duration: '8-hour private trip, up to 2 anglers' },
+              ],
+            })
+          ),
+        }}
       />
     </>
   );

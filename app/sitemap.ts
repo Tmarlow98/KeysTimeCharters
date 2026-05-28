@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { site } from '@/lib/site';
+import { fishingReports } from '@/lib/fishing-reports';
 
 /**
  * Sitemap — homepage is live now; trip + utility pages are listed
@@ -16,29 +17,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/pricing',
     '/gallery',
     '/contact',
-  ];
-  const reportRoutes = [
-    '/fishing-reports',
-    '/fishing-reports/flamingo-snook-fishing-report-may-17-2026',
+    '/best-time-to-fish-flamingo',
+    '/flamingo-tarpon-fishing',
+    '/everglades-snook-fishing',
   ];
   return [
-    ...routes.map((path) => ({
-      url: `${site.url}${path}`,
-      lastModified: now,
-      changeFrequency: (path === '' ? 'weekly' : 'monthly') as 'weekly' | 'monthly',
-      priority: path === '' ? 1.0 : 0.7,
-    })),
+    ...routes.map((path) => {
+      const isTripPage =
+        path === '/flamingo-fishing-charter' ||
+        path === '/florida-keys-flats-fishing' ||
+        path === '/backcountry-fishing-everglades';
+      return {
+        url: `${site.url}${path}`,
+        lastModified: now,
+        changeFrequency: (path === '' ? 'weekly' : 'monthly') as 'weekly' | 'monthly',
+        priority: path === '' ? 1.0 : isTripPage ? 0.8 : 0.7,
+      };
+    }),
     {
-      url: `${site.url}${reportRoutes[0]}`,
+      url: `${site.url}/fishing-reports`,
       lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
-    {
-      url: `${site.url}${reportRoutes[1]}`,
-      lastModified: new Date('2026-05-17'),
+    ...fishingReports.map((r) => ({
+      url: `${site.url}/fishing-reports/${r.slug}`,
+      lastModified: new Date(r.datePublished),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
-    },
+    })),
   ];
 }

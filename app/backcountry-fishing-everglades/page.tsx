@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookingCTA from '@/components/BookingCTA';
@@ -8,7 +9,7 @@ import CallToBook from '@/components/CallToBook';
 import FAQ from '@/components/FAQ';
 import { TRIPS } from '@/lib/trips';
 import { site } from '@/lib/site';
-import { faqSchema } from '@/lib/seo';
+import { faqSchema, serviceSchema } from '@/lib/seo';
 import type { FAQItem } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -84,6 +85,12 @@ export default function BackcountryPage() {
               <CallToBook className="btn-primary bg-flats-500 hover:bg-flats-600" />
               <a href={site.emailHref} className="btn-secondary">Email Us</a>
             </div>
+            <p className="mt-3 text-sm text-white/60">
+              Starting at $600 for a 4-hour private trip —{' '}
+              <a href="/pricing" className="underline underline-offset-2 transition-colors hover:text-white/80">
+                see all pricing
+              </a>
+            </p>
           </div>
         </section>
 
@@ -105,6 +112,11 @@ export default function BackcountryPage() {
                   </p>
                   <p>
                     This trip works well for anglers who want to cover a lot of water, try multiple species, and fish without the traffic of more popular areas. Great for beginners and experienced anglers alike.
+                  </p>
+                  <p className="text-sm">
+                    <a href="/meet-your-captain" className="font-medium text-flats-600 transition-colors hover:text-flats-700">
+                      Meet Captain Tyler →
+                    </a>
                   </p>
                 </div>
               </div>
@@ -169,6 +181,15 @@ export default function BackcountryPage() {
               </a>
               .
             </p>
+            <p className="mt-4 text-sm text-ink-600">
+              Related guides:{' '}
+              <a href="/best-time-to-fish-flamingo" className="font-medium text-flats-600 underline-offset-2 hover:underline">Best time to fish Flamingo</a>
+              {', '}
+              <a href="/everglades-snook-fishing" className="font-medium text-flats-600 underline-offset-2 hover:underline">Everglades snook fishing guide</a>
+              {', '}
+              <Link href="/flamingo-tarpon-fishing" className="font-medium text-flats-600 underline-offset-2 hover:underline">Flamingo tarpon fishing guide</Link>
+              .
+            </p>
           </div>
         </section>
 
@@ -183,10 +204,32 @@ export default function BackcountryPage() {
       */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             faqSchema([BACKCOUNTRY_FAQS[0], BACKCOUNTRY_FAQS[2], BACKCOUNTRY_FAQS[3]])
+          ),
+        }}
+      />
+      {/* JSON-LD: Service */}
+      <script
+        type="application/ld+json"
+         
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            serviceSchema({
+              name: 'Backcountry Fishing Charter',
+              description:
+                'Private backcountry fishing charters across Florida Bay — redfish, snook, and sea trout in the skinny water of the Everglades with a local guide.',
+              url: `${site.url}/backcountry-fishing-everglades`,
+              image: `${site.url}/images/trips/backcountry.jpg`,
+              areaServed: ['Florida Bay', 'Everglades National Park', 'Florida Keys'],
+              offers: [
+                { name: '4-Hour Charter', price: 600, duration: '4-hour private trip, up to 2 anglers' },
+                { name: '6-Hour Charter', price: 700, duration: '6-hour private trip, up to 2 anglers' },
+                { name: '8-Hour Charter', price: 800, duration: '8-hour private trip, up to 2 anglers' },
+              ],
+            })
           ),
         }}
       />

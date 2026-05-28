@@ -11,7 +11,7 @@ import Testimonials from '@/components/Testimonials';
 import BookingCTA from '@/components/BookingCTA';
 import FAQ, { FAQS } from '@/components/FAQ';
 import Footer from '@/components/Footer';
-import { faqSchema, localBusinessSchema } from '@/lib/seo';
+import { faqSchema, localBusinessSchema, organizationSchema } from '@/lib/seo';
 import { site } from '@/lib/site';
 
 /**
@@ -132,13 +132,19 @@ export default function HomePage() {
       {/* JSON-LD: LocalBusiness */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
+      />
+      {/* JSON-LD: Organization — links business entity to founder */}
+      <script
+        type="application/ld+json"
+         
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
       />
       {/* JSON-LD: FAQPage — fed from the same array the FAQ component renders */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(FAQS)) }}
       />
     </>
