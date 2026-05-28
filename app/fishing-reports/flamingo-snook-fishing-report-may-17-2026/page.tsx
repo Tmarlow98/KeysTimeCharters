@@ -6,27 +6,21 @@ import Footer from '@/components/Footer';
 import { site } from '@/lib/site';
 import { faqSchema, blogPostingSchema, breadcrumbSchema } from '@/lib/seo';
 import type { FAQItem } from '@/lib/seo';
+import { getReportOrThrow } from '@/lib/fishing-reports';
+
+const report = getReportOrThrow('flamingo-snook-fishing-report-may-17-2026');
 
 export const metadata: Metadata = {
-  title: 'Flamingo Fishing Report: Double-Digit Snook – May 17, 2026',
-  description:
-    'A stiff east wind and late-morning low water set up a strong day of Everglades backcountry fishing out of Flamingo — double-digit snook and a shot at redfish.',
+  title: report.title,
+  description: report.summary,
   alternates: {
-    canonical: `${site.url}/fishing-reports/flamingo-snook-fishing-report-may-17-2026`,
+    canonical: `${site.url}/fishing-reports/${report.slug}`,
   },
   openGraph: {
-    title: 'Flamingo Fishing Report: Double-Digit Snook – May 17, 2026',
-    description:
-      'A stiff east wind and late-morning low water set up a strong day of Everglades backcountry fishing out of Flamingo — double-digit snook and a shot at redfish.',
-    url: `${site.url}/fishing-reports/flamingo-snook-fishing-report-may-17-2026`,
+    title: report.title,
+    description: report.summary,
+    url: `${site.url}/fishing-reports/${report.slug}`,
   },
-  keywords: [
-    'Flamingo fishing report',
-    'Everglades snook fishing',
-    'Florida Bay redfish',
-    'backcountry fishing Flamingo',
-    'snook fishing Everglades National Park',
-  ],
 };
 
 const REPORT_FAQS: FAQItem[] = [
@@ -52,7 +46,7 @@ const REPORT_FAQS: FAQItem[] = [
   },
 ];
 
-const REPORT_URL = `${site.url}/fishing-reports/flamingo-snook-fishing-report-may-17-2026`;
+const REPORT_URL = `${site.url}/fishing-reports/${report.slug}`;
 
 export default function FlamingSnookReportPage() {
   return (
@@ -73,10 +67,10 @@ export default function FlamingSnookReportPage() {
               ← Fishing Reports
             </Link>
             <time
-              dateTime="2026-05-17"
+              dateTime={report.datePublished}
               className="mt-3 block text-xs font-semibold uppercase tracking-widest text-flats-300"
             >
-              May 17, 2026
+              {report.date}
             </time>
             <h1
               id="report-title"
@@ -271,23 +265,40 @@ export default function FlamingSnookReportPage() {
 
               <hr className="my-10 border-ink-100" />
 
+              <h2 className="font-display text-2xl font-semibold text-ink-900">
+                Related Pages
+              </h2>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {report.relatedPages.map((page) => (
+                  <li key={page.href}>
+                    <Link
+                      href={page.href}
+                      className="flex items-center justify-between rounded-xl border border-ink-100 bg-white px-5 py-4 text-sm font-semibold text-ink-800 shadow-card transition-colors hover:border-flats-300 hover:text-flats-700"
+                    >
+                      {page.label}
+                      <span aria-hidden="true" className="ml-3 text-flats-400">→</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/fishing-reports"
+                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-flats-600 transition-colors hover:text-flats-700"
+              >
+                ← More fishing reports
+              </Link>
+
+              <hr className="my-10 border-ink-100" />
+
               <p>
-                If you want to get on the snook or redfish out of Flamingo while this bite is
-                going, now is a good time.{' '}
+                Ready to fish Flamingo?{' '}
                 <Link
                   href="/contact"
                   className="text-flats-600 underline underline-offset-2 transition-colors hover:text-flats-700"
                 >
                   Book a Flamingo backcountry fishing charter
                 </Link>{' '}
-                or{' '}
-                <Link
-                  href="/fishing-reports"
-                  className="text-flats-600 underline underline-offset-2 transition-colors hover:text-flats-700"
-                >
-                  browse more Flamingo fishing reports
-                </Link>{' '}
-                to see what's been happening on the water.
+                and we&apos;ll put together a plan.
               </p>
 
 
@@ -301,17 +312,17 @@ export default function FlamingSnookReportPage() {
       {/* JSON-LD: BlogPosting */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             blogPostingSchema({
-              title: 'Flamingo Fishing Report: Double-Digit Snook – May 17, 2026',
-              description:
-                'A stiff east wind and late-morning low water set up a strong day of Everglades backcountry fishing out of Flamingo — double-digit snook and a shot at redfish.',
+              title: report.title,
+              description: report.summary,
               url: REPORT_URL,
-              datePublished: '2026-05-17',
+              datePublished: report.datePublished,
+              dateModified: report.dateModified,
               authorName: 'Captain Tyler Marlow',
-              image: `${site.url}/images/dad morning snook.jpeg`,
+              image: report.image ? `${site.url}${encodeURI(report.image)}` : undefined,
             })
           ),
         }}
@@ -320,13 +331,13 @@ export default function FlamingSnookReportPage() {
       {/* JSON-LD: BreadcrumbList */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             breadcrumbSchema([
               { name: 'Home', url: site.url },
               { name: 'Fishing Reports', url: `${site.url}/fishing-reports` },
-              { name: 'Flamingo Fishing Report: Double-Digit Snook', url: REPORT_URL },
+              { name: report.title, url: REPORT_URL },
             ])
           ),
         }}
@@ -335,7 +346,7 @@ export default function FlamingSnookReportPage() {
       {/* JSON-LD: FAQPage — fed from the same array rendered above */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(REPORT_FAQS)) }}
       />
     </>

@@ -149,7 +149,7 @@ export default function ContactPage() {
       {/* JSON-LD: FAQPage */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(CONTACT_FAQS)) }}
       />
     </>

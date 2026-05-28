@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Script from 'next/script';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookingCTA from '@/components/BookingCTA';
 import SectionHeading from '@/components/SectionHeading';
 import CallToBook from '@/components/CallToBook';
+import { personSchema } from '@/lib/seo';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -37,41 +37,14 @@ export const metadata: Metadata = {
   ],
 };
 
-const captainSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Tyler Marlow',
-  honorificPrefix: 'Captain',
-  jobTitle: 'Fishing Guide & Charter Captain',
-  worksFor: {
-    '@type': 'LocalBusiness',
-    name: site.name,
-    url: site.url,
-  },
-  url: `${site.url}/meet-your-captain`,
-  telephone: site.phone,
-  email: site.email,
-  knowsAbout: [
-    'Light tackle fishing',
-    'Fly fishing',
-    'Paddle tail lures',
-    'Tarpon fishing',
-    'Redfish',
-    'Snook',
-    'Trout',
-    'Everglades backcountry fishing',
-    'Florida Keys flats fishing',
-    'Flamingo fishing',
-  ],
-};
 
 export default function MeetYourCaptainPage() {
   return (
     <>
-      <Script
-        id="captain-schema"
+      { }
+      <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(captainSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema()) }}
       />
       <Header />
       <main id="main">

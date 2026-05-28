@@ -204,7 +204,7 @@ export default function PricingPage() {
       {/* JSON-LD: FAQPage */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(PRICING_FAQS)) }}
       />
     </>

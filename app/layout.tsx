@@ -40,8 +40,8 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
-  authors: [{ name: site.name }],
-  creator: site.name,
+  authors: [{ name: 'Captain Tyler Marlow', url: `${site.url}/meet-your-captain` }],
+  creator: 'Captain Tyler Marlow',
   publisher: site.name,
   robots: { index: true, follow: true },
   icons: {

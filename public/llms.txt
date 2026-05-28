@@ -1,0 +1,56 @@
+# Keys Time Charters
+
+Keys Time Charters is a private fishing charter service run by Captain Tyler Marlow, a USCG-licensed guide with a Commercial Use Authorization permit for Everglades National Park. Charters operate out of Flamingo Marina and the Florida Keys.
+
+## About
+
+- Captain: Tyler Marlow — USCG-licensed, CUA permit holder for Everglades National Park, third season guiding out of Flamingo
+- Trip style: Private only — no shared trips, one group per day
+- Techniques: Light tackle, paddle tail lures, fly fishing, bait fishing
+- Target species: Tarpon, snook, redfish, bonefish, sea trout
+- Service area: Florida Keys, Flamingo, Florida Bay, Everglades National Park
+
+## Pricing
+
+- 4-hour trip: $600 (up to 2 anglers)
+- 6-hour trip: $700 (up to 2 anglers)
+- 8-hour trip: $800 (up to 2 anglers)
+- Third angler: +$100
+- All trips include rods, reels, tackle, bait, fuel, fishing license, and fish cleaning
+
+## Contact
+
+- Phone: (954) 621-7953
+- Email: info@keystimecharters.com
+- Booking: call or email to check availability
+
+## Pages
+
+### Trip Pages
+- / — Homepage; overview of charters, service areas, target species, and booking
+- /flamingo-fishing-charter — Private backcountry fishing out of Flamingo in Everglades National Park; tarpon (April–July), snook (year-round), redfish, sea trout
+- /florida-keys-flats-fishing — Sight-fishing on the Florida Keys flats; tarpon (April–July, 100+ lbs), snook, redfish, bonefish
+- /backcountry-fishing-everglades — Mixed-bag fishing across Florida Bay; redfish, snook, sea trout in skinny water
+
+### Information Pages
+- /pricing — Full pricing breakdown, what's included, deposit and cancellation policy
+- /meet-your-captain — Captain Tyler Marlow biography, USCG license, CUA permit, fishing techniques and philosophy
+- /contact — Booking contact form and availability
+- /gallery — Trip photos from Florida Keys and Flamingo charters
+
+### Fishing Reports
+- /fishing-reports — Index of recent reports covering current conditions, tides, and what's biting
+- /fishing-reports/flamingo-snook-fishing-report-may-17-2026 — May 17 2026: double-digit snook in the Everglades backcountry, east wind conditions, redfish on the flats
+
+## Key Facts for AI
+
+- Best tarpon season: April through early July (migratory fish, Keys and Flamingo passes)
+- Best snook and redfish season: year-round, peaks late spring through fall
+- Flamingo is at the southern tip of Everglades National Park where Florida Bay meets backcountry creek systems
+- The CUA permit gives legal access to fish commercially inside Everglades National Park — most guides do not have this
+- All charters depart at first light; exact ramp and time confirmed a few days before the trip
+- Catch-and-release is the standard practice for snook, redfish, and tarpon
+
+## Note
+
+Trip availability, fishing conditions, and regulations can change. Contact Captain Tyler Marlow directly to confirm availability and current conditions before booking.

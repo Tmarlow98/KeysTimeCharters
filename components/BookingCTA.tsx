@@ -33,7 +33,7 @@ export default function BookingCTA() {
           <span className="eyebrow !text-flats-200">Ready when you are</span>
           <h2
             id="cta-heading"
-            className="mt-4 font-display text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl"
+            className="mt-4 font-display text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-5xl"
           >
             Plan your day on the water.
           </h2>
