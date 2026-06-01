@@ -13,6 +13,7 @@ import FAQ, { FAQS } from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import { faqSchema, localBusinessSchema, organizationSchema } from '@/lib/seo';
 import { site } from '@/lib/site';
+import { sortedFishingReports } from '@/lib/fishing-reports';
 
 /**
  * HOMEPAGE
@@ -62,6 +63,8 @@ export const metadata: Metadata = {
   ],
 };
 
+const latestReport = sortedFishingReports[0];
+
 export default function HomePage() {
   return (
     <>
@@ -91,25 +94,24 @@ export default function HomePage() {
             </p>
             <div className="mt-10 max-w-2xl rounded-2xl border border-ink-100 bg-sand-50 p-8 shadow-card">
               <time
-                dateTime="2026-05-17"
+                dateTime={latestReport.datePublished}
                 className="text-xs font-semibold uppercase tracking-widest text-flats-700"
               >
-                May 17, 2026
+                {latestReport.date}
               </time>
               <h3 className="mt-2 font-display text-xl font-semibold text-ink-900">
                 <Link
-                  href="/fishing-reports/flamingo-snook-fishing-report-may-17-2026"
+                  href={`/fishing-reports/${latestReport.slug}`}
                   className="transition-colors hover:text-flats-600"
                 >
-                  Flamingo Fishing Report: Double-Digit Snook
+                  {latestReport.title}
                 </Link>
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-ink-700">
-                A stiff east wind and late-morning low water set up a strong day of Everglades
-                backcountry fishing out of Flamingo — double-digit snook and a shot at redfish.
+                {latestReport.summary}
               </p>
               <Link
-                href="/fishing-reports/flamingo-snook-fishing-report-may-17-2026"
+                href={`/fishing-reports/${latestReport.slug}`}
                 className="mt-4 inline-block text-sm font-medium text-flats-600 transition-colors hover:text-flats-700"
               >
                 Read the full report →
