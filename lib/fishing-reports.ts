@@ -15,6 +15,25 @@ export interface FishingReport {
 
 export const fishingReports: FishingReport[] = [
   {
+    slug: 'flamingo-snook-redfish-fishing-report-june-6-2026',
+    title: 'Flamingo Fishing Report: Snook & Redfish on the Falling Tide – June 6, 2026',
+    date: 'June 6, 2026',
+    datePublished: '2026-06-06',
+    summary:
+      'A sunny 15 mph east wind day out of Flamingo that started slow and finished strong — 4 reds and 3 snook, including a 30-plus-inch overslot red, once the falling afternoon tide pushed the fish onto the flat edges.',
+    location: 'Flamingo, Everglades National Park',
+    targetSpecies: ['Snook', 'Redfish'],
+    conditions: 'Sunny, 15 mph east wind, half moon, morning low, incoming 9–10 am, falling afternoon tide',
+    image: '/images/KevinBigRedHeroPic6-6.jpeg',
+    imageAlt: 'Angler holding a 30-inch-plus overslot redfish on the backcountry flats near Flamingo',
+    relatedPages: [
+      { href: '/flamingo-fishing-charter', label: 'Flamingo Fishing Charter' },
+      { href: '/backcountry-fishing-everglades', label: 'Backcountry Fishing Charter' },
+      { href: '/everglades-snook-fishing', label: 'Everglades Snook Fishing Guide' },
+      { href: '/best-time-to-fish-flamingo', label: 'Best Time to Fish Flamingo' },
+    ],
+  },
+  {
     slug: 'flamingo-mixed-bag-fishing-report-may-31-2026',
     title: 'Flamingo Mixed-Bag Fishing Report: Tarpon, Snook, Redfish & Tripletail – May 31, 2026',
     date: 'May 31, 2026',
